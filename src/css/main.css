@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.model-container {
+    display: flex;
+    width: 80%;
+    margin-block: 0.3rem;
+}
+
+.model-msg {
+    background-color: lightgray;
+    border-radius: 1px 8px 8px 8px;
+    padding: 0.4rem;
+}
+
+.user-container {
+    display: flex;
+    justify-content: end;
+    margin-block: 0.3rem;
+}
+
+.user-msg {
+    background-color: lightskyblue;
+    border-radius: 8px 8px 1px 8px;
+    padding: 0.4rem;
+}
+
+.alert-msg {
+    background-color: lightcoral;
+    border-radius: 1px 8px 8px 8px;
+    padding: 0.4rem;
+}
