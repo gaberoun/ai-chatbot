@@ -31,3 +31,30 @@
     border-radius: 1px 8px 8px 8px;
     padding: 0.4rem;
 }
+
+#loading {
+    color: gray;
+}
+
+.dot {
+    animation: loading .7s infinite;
+    display: inline-block;
+}
+#dot1 {
+    animation-delay: .3s;
+}
+#dot2 {
+    animation-delay: .2s;
+}
+#dot3 {
+    animation-delay: .3s;
+}
+
+@keyframes loading {
+0%, 100% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(0.1rem);
+}
+}

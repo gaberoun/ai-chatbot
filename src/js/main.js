@@ -8,6 +8,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const msg = document.getElementById('chat-input').value;
   displayUser(msg);
+  displayLoading();
   getMessage(msg);
 
   e.target.reset();
@@ -15,6 +16,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
 // Display functions
 const container = document.getElementById('chat-container');
+const loading = document.getElementById('loading');
 
 function displayUser(msg) {
   const msgContainer = document.createElement('div');
@@ -52,6 +54,25 @@ function displayError(err) {
   container.appendChild(msgContainer);
 }
 
+function displayLoading() {
+  const loadContainer = document.createElement('div');
+  loadContainer.id = 'loading';
+
+  const load = document.createElement('span');
+  load.textContent = 'Responding';
+  loadContainer.appendChild(load);
+
+  for (let i = 0; i<3; i++) {
+    const dot = document.createElement('span');
+    dot.classList = 'dot';
+    dot.id = `dot${i}`;
+    dot.textContent = '.';
+    loadContainer.appendChild(dot);
+  }
+
+  container.appendChild(loadContainer);
+}
+
 // Fetch API
 async function getMessage(msg) {
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -63,6 +84,8 @@ async function getMessage(msg) {
     const result = await chat.sendMessage(msg);
     const response = result.response;
     const text = response.text();
+
+    container.removeChild(document.getElementById('loading'));
     displayModel(text); 
     console.log(chatHistory);
 
